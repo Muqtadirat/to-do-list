@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/d3e0ff209f.js"
+      crossorigin="anonymous"
+    ></script>
+    <title>To Do List</title>
+  </head>
+  <body>
+    <section class="input">
+      <div class="input-field">
+        <input
+          type="text"
+          name="titleInput"
+          id="titleInput"
+          placeholder="Title..."
+        />
+        <input
+          type="text"
+          name="aboutInput"
+          id="aboutInput"
+          placeholder="About..."
+        />
+      </div>
+
+      <div class="add-button">
+        <!-- <img src="./assets/add button.svg" alt="" srcset=""> -->
+        <button type="button"><i class="fa-solid fa-plus icon"></i></button>
+      </div>
+    </section>
+
+    <ul id="task">
+      <li class="task-item">
+        <div class="task-text">
+          <h2 class="task-title">Task Title</h2>
+          <p class="task-about">Task info</p>
+        </div>
+
+        <div class="delete-button">
+          <button type="button"><i class="fa-solid fa-xmark icon"></i></button>
+        </div>
+      </li>
+    </ul>
+
+    <script src="app.js"></script>
+  </body>
+</html>
