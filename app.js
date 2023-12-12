@@ -2,17 +2,14 @@
 // Pass the input value to appropriate task section
 // A new li needs to be created
 
-let taskBody = document.querySelector("#task");
-let taskItem = document.querySelector(".task-item");
-let titleInput = document.querySelector("#titleInput");
-let aboutInput = document.querySelector("#aboutInput");
-let titleValue = document.querySelector(".task-title");
-let aboutValue = document.querySelector(".task-about");
+const taskList = document.querySelector("#taskList");
+// let taskItem = document.querySelector(".task-item");
 let addTaskBtn = document.querySelector(".add-button");
 let delTaskBtn = document.querySelector(".delete-button");
 
-// new li should be created
-function createTaskBody() {
+// new li should be created--
+// Function to create new task
+function createTask(title, about) {
   const newTask = document.createElement("div");
 
   newTask.innerHTML = `
@@ -22,31 +19,40 @@ function createTaskBody() {
         </div>
 
         <div class="task-text">
-          <h2 class="task-title">Task Title</h2>
-          <p class="task-about">Task info</p>
+          <h2 class="task-title">${title}</h2>
+          <p class="task-about">${about}</p>
         </div>
 
         <div class="">
-          <button class="delete-button" type="button"><i class="fa-solid fa-xmark icon"></i></button>
+          <button class="delete-button" onclick="delTask()" type="button"><i class="fa-solid fa-xmark icon"></i></button>
         </div>
       </li>
   `;
 
-  // append new li to ul
-  taskBody.appendChild(newTask)
+  // prepend new li to ul
+  taskList.prepend(newTask);
 }
-
-addTaskBtn.addEventListener("click", createTaskBody)
 
 // Pass input value from input boxes to newly created task body
 
-let addTask = () => {
-  
-}
+const addTask = () => {
+  let titleInput = document.querySelector("#titleInput");
+  let aboutInput = document.querySelector("#aboutInput");
 
-// let addTask = () => {
-//   titleValue.textContent = titleInput.value;
-//   aboutValue.textContent = aboutInput.value;
-// };
+  title = titleInput.value;
+  about = aboutInput.value;
 
-// addTaskBtn.addEventListener("click", addTask);
+  createTask(title, about);
+  titleInput.value = "";
+  aboutInput.value = "";
+};
+
+addTaskBtn.addEventListener("click", addTask);
+
+//Delete button should del it's div
+
+const delTask = () => {
+  let taskItem = document.querySelector(".task-item");
+
+  taskItem.remove();
+};
