@@ -76,7 +76,6 @@ h2 {
   border-radius: 8px;
   display: flex;
   justify-content: space-between;
-  /* align-items: baseline; */
   align-items: center;
   padding: 16px;
   gap: 10px;
@@ -89,9 +88,13 @@ h2 {
   flex-grow: 1;
 }
 
-.check-button {
+.check-button, .uncheck-button {
   font-size: 32px;
   cursor: pointer;
+}
+
+.uncheck-button{
+  display: none;
 }
 
 .delete-button {
@@ -107,5 +110,10 @@ h2 {
 
 /* Icon styling */
 .icon {
+  color: var(--primary-color);
+}
+
+.fa-circle-check {
+  /* display: none; */
   color: var(--primary-color);
 }
