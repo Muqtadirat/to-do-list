@@ -63,7 +63,7 @@ h2 {
   font-size: 28px;
 }
 
-#task {
+#taskList {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -91,6 +91,7 @@ h2 {
 
 .check-button {
   font-size: 32px;
+  cursor: pointer;
 }
 
 .delete-button {
