@@ -4,12 +4,12 @@
   box-sizing: border-box;
 }
 
-:root{
-    --primary-color: #ff8303;
-    --secondary-color: #a35709;
-    --background-color: #1b1a17;
-    --secondary-background: #1f1e1b;
-    --text-color: #f0e3ca;
+:root {
+  --primary-color: #ff8303;
+  --secondary-color: #a35709;
+  --background-color: #1b1a17;
+  --secondary-background: #1f1e1b;
+  --text-color: #f0e3ca;
 }
 
 body {
@@ -19,9 +19,9 @@ body {
   background-color: var(--background-color);
 }
 
-button{
-    border-radius: 8px;
-    cursor: pointer;
+button {
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 /* Input styling */
@@ -47,59 +47,64 @@ button{
   font-size: 16px;
 }
 
-.add-button button {
+.add-button {
   width: 70px;
   height: 70px;
   border: 3px solid var(--primary-color);
   background-color: inherit;
 }
 
-.add-button .icon{
-    font-size: 32px;
+.add-button .icon {
+  font-size: 32px;
 }
 
 /* Task styling */
-h2{
-    font-size: 28px;
+h2 {
+  font-size: 28px;
 }
 
-#task{
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-top: 32px;
+#task {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 32px;
 }
 
-.task-item{
-    background-color: var(--secondary-background);
-    border: 2px solid var(--primary-color);
-    border-radius: 8px;
-    display: flex;
-    justify-content: space-between;
-    /* align-items: baseline; */
-    align-items: center;
-    padding: 16px;
+.task-item {
+  background-color: var(--secondary-background);
+  border: 2px solid var(--primary-color);
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  /* align-items: baseline; */
+  align-items: center;
+  padding: 16px;
+  gap: 10px;
 }
 
-.task-text{
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+.task-text {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-grow: 1;
 }
 
-.delete-button button {
+.check-button {
+  font-size: 32px;
+}
+
+.delete-button {
   width: 32px;
   height: 32px;
   border: 3px solid var(--primary-color);
   background-color: inherit;
 }
 
-.delete-button .icon{
-    font-size: 16px;
+.delete-button .icon {
+  font-size: 16px;
 }
 
-
 /* Icon styling */
-.icon{
-    color: var(--primary-color);
+.icon {
+  color: var(--primary-color);
 }
