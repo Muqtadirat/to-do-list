@@ -2,10 +2,10 @@
 // Pass the input value to appropriate task section
 // A new li needs to be created
 
+"use strict";
+
 const taskList = document.querySelector("#taskList");
-// let taskItem = document.querySelector(".task-item");
-let addTaskBtn = document.querySelector(".add-button");
-let delTaskBtn = document.querySelector(".delete-button");
+const addTaskBtn = document.querySelector(".add-button");
 
 // new li should be created--
 // Function to create new task
@@ -13,10 +13,17 @@ function createTask(title, about) {
   const newTask = document.createElement("div");
 
   newTask.innerHTML = `
-      <li class="task-item">
-        <div class="check-button" >
+    <li class="task-item">
+
+      <div id="checkers" onclick="checkTask()">
+        <div class="check-button">
           <i class="fa-regular fa-circle icon"></i>
         </div>
+
+        <div class="uncheck-button">
+         <i class="fa-solid fa-circle-check"></i>
+        </div>
+       </div>
 
         <div class="task-text">
           <h2 class="task-title">${title}</h2>
@@ -39,8 +46,8 @@ const addTask = () => {
   let titleInput = document.querySelector("#titleInput");
   let aboutInput = document.querySelector("#aboutInput");
 
-  title = titleInput.value;
-  about = aboutInput.value;
+  const title = titleInput.value;
+  const about = aboutInput.value;
 
   createTask(title, about);
   titleInput.value = "";
@@ -49,10 +56,34 @@ const addTask = () => {
 
 addTaskBtn.addEventListener("click", addTask);
 
-//Delete button should del it's div
+//Delete button should del its div
 
 const delTask = () => {
   let taskItem = document.querySelector(".task-item");
 
   taskItem.remove();
+};
+
+// Function to mark completed task
+
+const checkTask = () => {
+  const checkButton = document.querySelector(".check-button");
+  const uncheckButton = document.querySelector(".uncheck-button");
+  let taskText = document.querySelector(".task-text");
+  let taskItem = document.querySelector(".task-item");
+
+  if (checkButton.style.display === "block") {
+    checkButton.style.display = "none";
+    uncheckButton.style.display = "block";
+    taskText.style.textDecoration = "line-through";
+    taskText.style.color = "var(--secondary-color)";
+    taskItem.style.border = "none";
+  } else {
+    checkButton.style.display = "block";
+    uncheckButton.style.display = "none";
+    taskText.style.textDecoration = "none";
+    taskItem.style.border = "2px solid var(--primary-color)";
+    taskText.style.color = "var(--text-color)";
+  }
+
 };
