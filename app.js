@@ -15,7 +15,7 @@ function createTask(title, about) {
   newTask.innerHTML = `
     <li class="task-item">
 
-      <div id="checkers" onclick="checkTask()">
+      <div id="checkers" onclick="checkTask(event)">
         <div class="check-button">
           <i class="fa-regular fa-circle icon"></i>
         </div>
@@ -31,7 +31,7 @@ function createTask(title, about) {
         </div>
 
         <div class="">
-          <button class="delete-button" onclick="delTask()" type="button"><i class="fa-solid fa-xmark icon"></i></button>
+          <button class="delete-button" onclick="delTask(event)" type="button"><i class="fa-solid fa-xmark icon"></i></button>
         </div>
       </li>
   `;
@@ -54,23 +54,26 @@ const addTask = () => {
   aboutInput.value = "";
 };
 
-addTaskBtn.addEventListener("click", addTask);
-
 //Delete button should del its div
 
-const delTask = () => {
-  let taskItem = document.querySelector(".task-item");
+const delTask = (event) => {
+  let deleteButton = event.target; //Targets the specific div/element
+
+  let taskItem = deleteButton.closest(".task-item");
 
   taskItem.remove();
 };
 
-// Function to mark completed task
+// Function to mark/unmark completed task
 
-const checkTask = () => {
-  const checkButton = document.querySelector(".check-button");
-  const uncheckButton = document.querySelector(".uncheck-button");
-  let taskText = document.querySelector(".task-text");
-  let taskItem = document.querySelector(".task-item");
+const checkTask = (event) => {
+  const clickedButton = event.target;
+  let taskItem = clickedButton.closest(".task-item");
+
+  
+  const checkButton = taskItem.querySelector(".check-button");
+  const uncheckButton = taskItem.querySelector(".uncheck-button");
+  let taskText = taskItem.querySelector(".task-text");
 
   if (checkButton.style.display === "block") {
     checkButton.style.display = "none";
@@ -85,5 +88,7 @@ const checkTask = () => {
     taskItem.style.border = "2px solid var(--primary-color)";
     taskText.style.color = "var(--text-color)";
   }
-
 };
+
+// Event listeners
+addTaskBtn.addEventListener("click", addTask);
