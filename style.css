@@ -117,3 +117,12 @@ h2 {
   /* display: none; */
   color: var(--primary-color);
 }
+
+/* Media query */
+@media (min-width: 801px){
+  body{
+    display: flex;
+    flex-direction: column;
+    margin: 40px 25%;
+  }
+}
