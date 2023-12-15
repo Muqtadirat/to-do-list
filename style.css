@@ -19,15 +19,19 @@ body {
   background-color: var(--background-color);
 }
 
-h1{
+h1 {
   margin-bottom: 18px;
-  font-family: 'Pacifico', cursive;
+  font-family: "Pacifico", cursive;
   letter-spacing: 10px;
 }
 
 button {
   border-radius: 8px;
   cursor: pointer;
+}
+
+button:hover {
+  border: 3px inset;
 }
 
 /* Input styling */
@@ -94,29 +98,32 @@ h2 {
   flex-grow: 1;
 }
 
-.check-button, .uncheck-button {
+.check-button,
+.uncheck-button {
   font-size: 32px;
   cursor: pointer;
 }
 
-.uncheck-button{
+.uncheck-button {
   display: none;
 }
 
 /* Edit and delete */
-.task-buttons{
+.task-buttons {
   display: flex;
   gap: 12px;
 }
 
-.delete-button, .edit-button {
+.delete-button,
+.edit-button {
   width: 32px;
   height: 32px;
   border: 3px solid var(--primary-color);
   background-color: inherit;
 }
 
-.delete-button .icon, .edit-button .icon  {
+.delete-button .icon,
+.edit-button .icon {
   font-size: 16px;
 }
 
@@ -131,8 +138,8 @@ h2 {
 }
 
 /* Media query */
-@media (min-width: 801px){
-  body{
+@media (min-width: 801px) {
+  body {
     display: flex;
     flex-direction: column;
     margin: 40px 25%;
