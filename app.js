@@ -30,7 +30,8 @@ function createTask(title, about) {
           <p class="task-about">${about}</p>
         </div>
 
-        <div class="">
+        <div class="task-buttons">
+          <button class="edit-button" onclick="editTask(event)" type="button"><i class="fa-solid fa-pen icon"></i></button>
           <button class="delete-button" onclick="delTask(event)" type="button"><i class="fa-solid fa-xmark icon"></i></button>
         </div>
       </li>
@@ -70,7 +71,6 @@ const checkTask = (event) => {
   const clickedButton = event.target;
   let taskItem = clickedButton.closest(".task-item");
 
-  
   const checkButton = taskItem.querySelector(".check-button");
   const uncheckButton = taskItem.querySelector(".uncheck-button");
   let taskText = taskItem.querySelector(".task-text");
@@ -88,6 +88,52 @@ const checkTask = (event) => {
     taskItem.style.border = "2px solid var(--primary-color)";
     taskText.style.color = "var(--text-color)";
   }
+};
+
+// Edit task
+const editTask = (event) => {
+
+  let editButton = event.target.closest(".task-item");
+  let titleValue = editButton.querySelector(".task-title");
+  let aboutValue = editButton.querySelector(".task-about");
+
+  // Turn title to an input box for edit
+  let editTitle = document.createElement("input");
+  
+  editTitle.type = "text";
+  editTitle.value = titleValue.textContent;
+  titleValue.replaceWith(editTitle);
+  editTitle.style.backgroundColor = "var(--primary-color)";
+  editTitle.style.color = "#1b1a17";
+
+  // Edit about
+  let editAbout = document.createElement("input");
+  editAbout.type = "text";
+  editAbout.value = aboutValue.textContent;
+  aboutValue.replaceWith(editAbout);
+  editAbout.style.backgroundColor = "var(--primary-color)";
+  editAbout.style.color = "#1b1a17";
+
+  // Save new value
+  editTitle.addEventListener("keyup", (e) => {
+    if (e.key === "Enter") {
+      let newTitle = editTitle.value;
+      let newTitleElement = document.createElement("h2");
+      newTitleElement.classList.add("task-title");
+      newTitleElement.textContent = newTitle;
+      editTitle.replaceWith(newTitleElement);
+    }
+  });
+
+  editAbout.addEventListener("keyup", (e) => {
+    if (e.key === "Enter") {
+      let newAbout = editAbout.value;
+      let newAboutElement = document.createElement("p");
+      newAboutElement.classList.add("task-about");
+      newAboutElement.textContent = newAbout;
+      editAbout.replaceWith(newAboutElement);
+    }
+  });
 };
 
 // Event listeners

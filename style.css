@@ -19,6 +19,12 @@ body {
   background-color: var(--background-color);
 }
 
+h1{
+  margin-bottom: 18px;
+  font-family: 'Pacifico', cursive;
+  letter-spacing: 10px;
+}
+
 button {
   border-radius: 8px;
   cursor: pointer;
@@ -97,14 +103,20 @@ h2 {
   display: none;
 }
 
-.delete-button {
+/* Edit and delete */
+.task-buttons{
+  display: flex;
+  gap: 12px;
+}
+
+.delete-button, .edit-button {
   width: 32px;
   height: 32px;
   border: 3px solid var(--primary-color);
   background-color: inherit;
 }
 
-.delete-button .icon {
+.delete-button .icon, .edit-button .icon  {
   font-size: 16px;
 }
 
