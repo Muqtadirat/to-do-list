@@ -15,7 +15,7 @@ function createTask(title, about) {
   newTask.innerHTML = `
     <li class="task-item">
 
-      <div id="checkers" onclick="checkTask(event)">
+      <div id="checkers" onclick="checkUncheckTask(event)">
         <div class="check-button">
           <i class="fa-regular fa-circle icon"></i>
         </div>
@@ -32,7 +32,7 @@ function createTask(title, about) {
 
         <div class="task-buttons">
           <button class="edit-button" onclick="editTask(event)" type="button"><i class="fa-solid fa-pen icon"></i></button>
-          <button class="delete-button" onclick="delTask(event)" type="button"><i class="fa-solid fa-xmark icon"></i></button>
+          <button class="delete-button" onclick="deleteTask(event)" type="button"><i class="fa-solid fa-xmark icon"></i></button>
         </div>
       </li>
   `;
@@ -57,19 +57,18 @@ const addTask = () => {
 
 //Delete button should del its div
 
-const delTask = (event) => {
-  let deleteButton = event.target; //Targets the specific div/element
+function deleteTask(event) {
+  const taskItem = event.target.closest(".task-item"); //Targets the specific div/element
 
-  let taskItem = deleteButton.closest(".task-item");
-
-  taskItem.remove();
-};
+  if (taskItem) {
+    taskItem.remove();
+  }
+}
 
 // Function to mark/unmark completed task
 
-const checkTask = (event) => {
-  const clickedButton = event.target;
-  let taskItem = clickedButton.closest(".task-item");
+function checkUncheckTask(event) {
+  let taskItem = event.target.closest(".task-item");
 
   const checkButton = taskItem.querySelector(".check-button");
   const uncheckButton = taskItem.querySelector(".uncheck-button");
@@ -88,18 +87,18 @@ const checkTask = (event) => {
     taskItem.style.border = "2px solid var(--primary-color)";
     taskText.style.color = "var(--text-color)";
   }
-};
+}
 
 // Edit task
-const editTask = (event) => {
-
+function editTask(event) {
   let editButton = event.target.closest(".task-item");
+
   let titleValue = editButton.querySelector(".task-title");
   let aboutValue = editButton.querySelector(".task-about");
 
   // Turn title to an input box for edit
   let editTitle = document.createElement("input");
-  
+
   editTitle.type = "text";
   editTitle.value = titleValue.textContent;
   titleValue.replaceWith(editTitle);
@@ -134,7 +133,7 @@ const editTask = (event) => {
       editAbout.replaceWith(newAboutElement);
     }
   });
-};
+}
 
 // Event listeners
 addTaskBtn.addEventListener("click", addTask);
